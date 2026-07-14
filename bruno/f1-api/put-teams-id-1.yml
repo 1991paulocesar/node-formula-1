@@ -1,0 +1,20 @@
+info:
+  name: put-teams-id-1
+  type: http
+
+http:
+  method: PUT
+  url: "{{base_url}}/teams/1"
+  body:
+    type: json
+    data: |-
+      {
+        "name": "McLaren F1 Team"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

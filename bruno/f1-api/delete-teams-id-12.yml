@@ -1,0 +1,14 @@
+info:
+  name: delete-teams-id-12
+  type: http
+
+http:
+  method: DELETE
+  url: "{{base_url}}/teams/12"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

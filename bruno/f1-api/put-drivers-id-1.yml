@@ -1,0 +1,20 @@
+info:
+  name: put-drivers-id-1
+  type: http
+
+http:
+  method: PUT
+  url: "{{base_url}}/drivers/1"
+  body:
+    type: json
+    data: |-
+      {
+        "team": "Mercedes"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

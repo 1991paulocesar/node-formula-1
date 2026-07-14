@@ -1,0 +1,21 @@
+info:
+  name: post-teams
+  type: http
+
+http:
+  method: POST
+  url: "{{base_url}}/teams"
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Williams",
+        "base": "Grove, United Kingdom"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
