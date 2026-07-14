@@ -1,0 +1,15 @@
+info:
+  name: get-teams-f1-api
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{base_url}}/teams"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
