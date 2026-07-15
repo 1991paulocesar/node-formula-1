@@ -56,12 +56,14 @@ Este projeto é baseado no desafio de projeto da [DIO](https://www.dio.me/), a p
 ```bash
    cp .env.example .env
 ```
-   Edite o `.env`:
-DB_HOST=localhost
-DB_PORT=3306
-DB_USER=root
-DB_PASSWORD=sua_senha_aqui
-DB_NAME=formula_one
+Edite o `.env`:
+```
+   DB_HOST=localhost
+   DB_PORT=3306
+   DB_USER=root
+   DB_PASSWORD=sua_senha_aqui
+   DB_NAME=formula_one
+```
 
 5. Inicie o servidor:
 ```bash
@@ -74,6 +76,8 @@ DB_NAME=formula_one
 A pasta `bruno/f1-api` contém uma coleção pronta do [Bruno](https://www.usebruno.com/) com todas as requisições (GET, POST, PUT, DELETE) já configuradas usando a variável `{{base_url}}`. Basta abrir a coleção no Bruno e selecionar o environment `local`.
 
 ## 🗂️ Estrutura do projeto
+
+```
 node-formula-1/
 ├── src/
 │   ├── server.ts       # Rotas da API
@@ -82,6 +86,7 @@ node-formula-1/
 ├── schema.sql          # Script de criação do banco e seed de dados
 ├── .env.example        # Modelo de variáveis de ambiente
 └── README.md
+```
 
 ## 📚 Aprendizados
 
