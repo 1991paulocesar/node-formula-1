@@ -1,81 +1,102 @@
-<div align="center">
+# 🏎️ Formula One API
 
-  <img src="./.github/assets/blue-saiyan-bg.png" alt="Logo" height="200">
-  <h1 align="center"><strong>NODE BOILERPLATE - BLUE EDITION</strong></h1>
-  <p align="center">
-	  Don't start a new Node project from zero!<br> Use this simple <b>Nodejs</b> boilerplate with pre-configured <b>Typescript</b> in a modern way.
-  </p>
+API RESTful com operações CRUD completas para times e pilotos de Fórmula 1, construída com Node.js, Fastify e MySQL.
 
-</div>
+Este projeto é baseado no desafio de projeto da [DIO](https://www.dio.me/), a partir do repositório de referência [node-formula-1](https://github.com/digitalinnovationone/node-formula-1) do instrutor Felipe Aguiar, expandido com CRUD completo e persistência em banco de dados relacional.
 
-<br />
+## 🚀 Tecnologias
 
-  <!-- Badges -->
-<div align="center">
-  
-  [![TypeScript version][ts-badge]][typescript-5-4]
-  [![Node.js version][nodejs-badge]][nodejs]
+- **Node.js** + **TypeScript**
+- **Fastify** — framework web
+- **MySQL** — banco de dados relacional
+- **mysql2** — driver de conexão
+- **tsx** — execução de TypeScript sem build prévio
+- **Bruno** — cliente de API para testes (coleção incluída no repo)
 
-</div>
+## 📋 Funcionalidades
 
-# 🚀 Technologies
+| Método | Rota           | Descrição                        |
+|--------|----------------|-----------------------------------|
+| GET    | `/teams`       | Lista todos os times              |
+| GET    | `/teams/:id`   | Busca um time por id              |
+| POST   | `/teams`       | Cria um novo time                 |
+| PUT    | `/teams/:id`   | Atualiza um time existente        |
+| DELETE | `/teams/:id`   | Remove um time                    |
+| GET    | `/drivers`     | Lista todos os pilotos            |
+| GET    | `/drivers/:id` | Busca um piloto por id            |
+| POST   | `/drivers`     | Cria um novo piloto               |
+| PUT    | `/drivers/:id` | Atualiza um piloto existente      |
+| DELETE | `/drivers/:id` | Remove um piloto                  |
 
-This code source was developed with the following items:
+## 📦 Pré-requisitos
 
-### 📦 Dependencies
+- Node.js 20+
+- MySQL instalado e rodando localmente (ou acessível remotamente)
+- (Opcional) [Bruno](https://www.usebruno.com/) para testar as rotas com a coleção pronta
 
-- [typescript][typescript-npm] - Superset for application scale JavaScript development
-- [tsx][tsx-npm] - TypeScript Execute (tsx): Enable Node.js to run TypeScript
-- [tsup][tsup-npm] - Bundle your TypeScript library with no config, powered by esbuild
-- [@types/node][@types/node-npm] - type definitions for node
+## ⚙️ Configuração
 
-### 📄 Files
-
-- `.gitignore` - Ignore folders like node_modules
-- `.env` - Enviroment variables
-- `tsconfig.json` - Typescript configure Options
-
-### ⚡ Scripts
-
-- `npm run dist`: Compiles TypeScript files to JavaScript in the dist directory.
-- `npm run start:dev`: Runs the server in development mode with environment variables loaded from the .env file.
-- `npm run start:watch`: Runs the server in development mode with support for automatic reload on file changes.
-- `npm run start:dist`: Compiles the project and runs the compiled version from the dist directory.
-
-# 👨‍💻 How To Use
-
-click in **[Use this template]** OR
-
-To clone and run this application, you'll need [Git](https://git-scm.com), [Node.js v20+](https://nodejs.org/en/) + [NPM v10+](https://nodejs.org/en/) installed on your computer. From your command line:
-
+1. Clone o repositório:
 ```bash
-# Clone this repository
-$ git clone https://github.com/felipeAguiarCode/node-blue-boilerplate
-
-# Go into the repository
-$ cd node-blue-boilerplate
-
-# Install dependencies
-$ npm install
+   git clone https://github.com/1991paulocesar/node-formula-1.git
+   cd node-formula-1
 ```
 
-## Author
+2. Instale as dependências:
+```bash
+   npm install
+```
 
-| [<img src="https://avatars3.githubusercontent.com/u/37452836?s=96&v=4"><br><sub>Felipe Aguiar</sub>](https://github.com/felipeAguiarCode) |
-| :---------------------------------------------------------------------------------------------------------------------------------------: |
-|                                            [Linkedin](www.linkedin.com/in/felipe-aguiar-exe/)                                             |
+3. Crie o banco de dados e as tabelas rodando o script `schema.sql` no seu MySQL (via DBeaver, MySQL Workbench, ou linha de comando):
+```bash
+   mysql -u root -p < schema.sql
+```
 
-# Credits
+4. Copie o arquivo de exemplo de variáveis de ambiente e preencha com suas credenciais:
+```bash
+   cp .env.example .env
+```
+   Edite o `.env`:
+DB_HOST=localhost
+DB_PORT=3306
+DB_USER=root
+DB_PASSWORD=sua_senha_aqui
+DB_NAME=formula_one
 
-icons by [Pino Lamanna][dribble-icon]
+5. Inicie o servidor:
+```bash
+   npm run start:dev
+```
+   A API estará disponível em `http://localhost:3333`.
 
-[typescript]: https://www.typescriptlang.org/
-[typescript-5-4]: https://www.typescriptlang.org/
-[ts-badge]: https://img.shields.io/badge/TypeScript-5.4-blue.svg
-[nodejs-badge]: https://img.shields.io/badge/Node.js->=%2020.00-blue.svg
-[nodejs]: https://nodejs.org/
-[dribble-icon]: https://dribbble.com/Schakalwal
-[typescript-npm]: https://www.npmjs.com/package/typescript
-[tsx-npm]: https://www.npmjs.com/package/tsx
-[tsup-npm]: https://www.npmjs.com/package/tsup
-[@types/node-npm]: https://www.npmjs.com/package/@types/node
+## 🧪 Testando as rotas
+
+A pasta `bruno/f1-api` contém uma coleção pronta do [Bruno](https://www.usebruno.com/) com todas as requisições (GET, POST, PUT, DELETE) já configuradas usando a variável `{{base_url}}`. Basta abrir a coleção no Bruno e selecionar o environment `local`.
+
+## 🗂️ Estrutura do projeto
+node-formula-1/
+├── src/
+│   ├── server.ts       # Rotas da API
+│   └── database.ts     # Conexão com o MySQL
+├── bruno/              # Coleção de testes (Bruno)
+├── schema.sql          # Script de criação do banco e seed de dados
+├── .env.example        # Modelo de variáveis de ambiente
+└── README.md
+
+## 📚 Aprendizados
+
+Este desafio foi construído em etapas, evoluindo de uma API com dados em memória para uma API conectada a um banco de dados MySQL real, incluindo:
+- Estruturação de rotas CRUD com Fastify e TypeScript
+- Tipagem de parâmetros de rota e corpo de requisição
+- Uso de variáveis de ambiente para configuração segura
+- Modelagem de banco de dados relacional
+- Testes de API documentados e versionados com Bruno
+
+## 👤 Autor
+
+**Paulo César Ferreira Matos Silva**
+GitHub: [@1991paulocesar](https://github.com/1991paulocesar)
+
+## 🔗 Referência
+
+Projeto original: [digitalinnovationone/node-formula-1](https://github.com/digitalinnovationone/node-formula-1)
